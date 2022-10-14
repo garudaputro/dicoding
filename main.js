@@ -13,35 +13,10 @@ const isStorageExist = () => {
   return true;
 };
 
-document.addEventListener(RENDER_EVENT, () => {
-  const unfinishedBook = document.getElementById("incompleteBookshelfList");
-  unfinishedBook.innerHTML = "";
-
-  const finishedBook = document.getElementById("completeBookshelfList");
-  finishedBook.innerHTML = "";
-
-  for (const bookItem of books) {
-    const bookElement = makeBookElement(bookItem);
-    if (!bookItem.isComplete) {
-      unfinishedBook.append(bookElement);
-    } else {
-      finishedBook.append(bookElement);
-    }
-  }
-});
 
 
-const loadDataFromStorage = () => {
-  const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-  if (data !== null) {
-    for (const item of data) {
-      books.push(item);
-    }
-  }
 
-  document.dispatchEvent(new Event(RENDER_EVENT));
-};
 
 const saveData = () => {
   if (isStorageExist()) {
@@ -222,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
     addBook();
   });
 
-//   const searchForm = document.getElementById("formSearch");
+//   const searchForm = document.getElementById("searchBook");
 //   searchForm.addEventListener("submit", (event) => {
 //     event.preventDefault();
 //     searchBook();
@@ -230,13 +205,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //   const resetBtn = document.querySelector(".reset-btn");
 //   resetBtn.addEventListener("click", () => {
-//     document.getElementById("pencarian").value = "";
+//     document.getElementById("searchBookTitle").value = "";
 //     searchBook();
 //   });
 });
 
 // const searchBook = () => {
-//   const searchInput = document.getElementById("pencarian").value.toLowerCase();
+//   const searchInput = document.getElementById("searchBookTitle").value.toLowerCase();
 //   const bookItems = document.getElementsByClassName("item");
 
 //   for (let i = 0; i < bookItems.length; i++) {
