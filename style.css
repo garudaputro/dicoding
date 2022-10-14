@@ -169,3 +169,6 @@ main {
     background-color: darkred;
     color: white;
 }
+.btn-outline-success{
+    margin-right: 1em;
+}
